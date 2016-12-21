@@ -1,0 +1,71 @@
+form div {
+    margin-top: 20px;
+}
+form tbody{
+    
+    background-image:url("../img/1.jpg")
+}
+form span {
+    color: red;
+    margin-left: 10px;
+}
+
+label {
+    width: 80px;
+    display: inline-block;
+    margin-left: 120px;
+}
+/*input:required:invalid, input:focus:invalid {
+          background-color:lightcyan;
+        }*/
+
+input:required:invalid, input:focus:invalid {
+    background-image: url(/img/invalid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+input:required:valid {
+    background-image: url(/img/valid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+#login {
+    height: 70px;
+    width: 500px;
+    margin: 25px auto;
+}
+
+#carousel-container {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+#main-image-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+
+#thumbnails-container {
+    overflow-y: auto;
+    position: relative;
+    width: 420px;
+    height: 300px;
+    margin-top: 20px;
+    top: 0;
+    left: 40px;
+}
+
+    #thumbnails-container > a {
+        float: left;
+        height: 100px;
+        width: 100px;
+    }
+
+.thumbnail > img {
+    max-height: 100%;
+}
