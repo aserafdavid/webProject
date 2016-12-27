@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+	<meta charset="utf-8">
+	<title>בא לי פינגוין </title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+    <link href="content/bootstrap.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../scripts/angular.min.js"></script>
+
+    <script>
+        var url = 'streets.json';
+
+        angular.module('myApp', [])
+            .controller('namesCtrl',
+                function ($scope) {
+
+                    angular.element(document)
+                        .ready(function () {
+                            $.getJSON(url,
+                                function (d) {
+                                    console.log(d);
+                                    $scope.data = d;
+                                    $scope.$apply();
+                                });
+                        });
+                });
+    </script>
+
+
+    <script>
+	$(document).ready(function () {
+    	$('#logo').addClass('animated fadeInDown');
+    	$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="namesCtrl">
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden"><span id="logo">בא לי פינגוין <span>משלוחים</span></span></h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>הזמנה</h2>
+			</div>
+			<label for="name">שם</label>
+            <input type="text" id="name" placeholder="הכנס שם" required oninvalid="showError(this)">
+			<br/>
+			<label for="street">רחוב</label>
+            <select id="street" style="height: 32px" ng-model="data.model">
+                <option data-ng-repeat="option in data" ng-value="option.value">{{option.street}}</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="house-num">מס' בית</label>
+            <input type="number" id="house-num" required oninvalid="showError(this)" style="width: 40px">
+			<br/>
+            <label for="phone">טלפון</label>
+            <input type="number" id="phone" placeholder="הכנס טלפון" required oninvalid="showError(this)">
+            <br />
+            <label for="creditcard">מספר אשראי</label>
+            <input type="number" id="creditcard" placeholder="הכנס מספר אשראי" required oninvalid="showError(this)">
+            <br />
+            <label for="expires">תוקף</label>
+            <select id="expires-y" style="height: 32px">
+                <option hidden>שנה</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+            </select>
+            /
+            <select id="expires-m" style="height: 32px">
+                <option hidden>חודש</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="cvv">3 ספרות</label>
+            <input type="number" id="cvv" required oninvalid="showError(this)" style="width: 40px">
+            <br />
+            <label for="pay">סה"כ לתשלום &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₪</label>
+            <br />
+			<button type="submit">הזמן</button>
+		</div>
+	</div>
+</body>
+</html>
